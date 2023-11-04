@@ -12,7 +12,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import RamenDiningIcon from '@mui/icons-material/RamenDining';
-import { Routes } from 'react-router-dom';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import Pantry from './components/Pantry';
+import MealPlans from './components/Meals';
+import ShoppingList from './components/ShoppingList';
 
 const darkTheme = createTheme({
   palette: {
@@ -22,6 +25,8 @@ const darkTheme = createTheme({
 
 function App() {
   
+  let location = useLocation();
+  console.log(location.pathname);
 
   return (
     <div>
@@ -32,18 +37,21 @@ function App() {
         <Toolbar>
           <RamenDiningIcon fontSize='large' style={{ margin: 10, marginRight: 40 }}/>
           <Typography variant="h6" component="div" sx={{ marginLeft: 5 }}>
-            <Button variant="text">Pantry</Button>
+            <Link to='/'><Button variant={location.pathname === '/' ? 'contained':"text"}>Pantry</Button></Link>
           </Typography>
           <Typography variant="h6" component="div" sx={{ marginLeft: 5 }}>
-            <Button variant="text">Meal Plan</Button>
+            <Link to='/meals'><Button variant={location.pathname === '/meals' ? 'contained':"text"}>Meal Plan</Button></Link>
           </Typography>
           <Typography variant="h6" component="div" sx={{ marginLeft: 5 }}>
-            <Button variant="text">Shopping List</Button>
+            <Link to='/list'><Button variant={location.pathname === '/list' ? 'contained':"text"}>Shopping List</Button></Link>
           </Typography>
         </Toolbar>
       </AppBar>
       <div>
         <Routes>
+          <Route path='/' element={<Pantry/>}/>
+          <Route path='/meals' element={<MealPlans/>}/>
+          <Route path='/list' element={<ShoppingList/>}/>
         </Routes>
       </div>
     </Box>
