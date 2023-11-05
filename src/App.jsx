@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import Snackbar from '@mui/material/Snackbar';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -30,10 +31,13 @@ const darkTheme = createTheme({
   },
 });
 
+
+
 function App() {
   
   let location = useLocation();
   const [pantry, setPantry] = useState({});
+  const [shopItem, setCart] = useState({});
 
     function updatePantry(newVal, quantity) {
         if (newVal === null) return;
@@ -47,6 +51,22 @@ function App() {
         setPantry(newPantry);
     };
 
+    
+
+    function addToShoppingCart(newVal, quantity){
+      
+      if (newVal === null) return;
+      if (shopItem.hasOwnProperty(newVal)) {
+        // If it exists, increment the quantity by 1
+        shopItem[newVal] += 1;
+      } else {
+        // If it doesn't exist, add it with a quantity of 1
+        shopItem[newVal] = quantity;
+      }
+      setCart({ ...shopItem });
+
+    }
+
     function deleteFromPantry(pantryItem) {
         let newPantry = {
             ...pantry
@@ -55,10 +75,21 @@ function App() {
         setPantry(newPantry);
     }
 
+    function deleteFromCart(pantryItem) {
+      let newCartItem = {
+          ...shopItem
+      };
+      delete newCartItem[pantryItem];
+      setCart(newCartItem);
+  }
+
+   
+
   return (
     <div>
     <ThemeProvider theme={darkTheme}>
     <CssBaseline />
+
     <Box sx={{ flexGrow: 1 }}>
     <AppBar position="static">
         <Toolbar>
@@ -76,10 +107,11 @@ function App() {
       </AppBar>
       <div>
         <Routes>
-          <Route path='/' element={<Pantry pantry={pantry} updatePantry={updatePantry} deleteFromPantry={deleteFromPantry}/>}/>
+          <Route path='/' element={<Pantry pantry={pantry} updatePantry={updatePantry} deleteFromPantry={deleteFromPantry} addToShoppingCart={addToShoppingCart} />}/>
           <Route path='/meals' element={<MealPlans/>}/>
-          <Route path='/list' element={<ShoppingList/>}/>
+          <Route path='/list' element={<ShoppingList shopItem={shopItem} addToShoppingCart={addToShoppingCart} deleteFromCart={deleteFromCart}/>}/>
         </Routes>
+        
       </div>
     </Box>
   </ThemeProvider>
