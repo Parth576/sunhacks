@@ -20,6 +20,13 @@ import ShoppingList from './components/ShoppingList';
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
+    primary: {
+      main: "#B3DC4B",
+    },
+    secondary: {
+      main: "#d7ffaf",
+    },
+
   },
 });
 
