@@ -43,9 +43,9 @@ function App() {
   const [proteinG, setProteinG] = useState(65);
   const [carbG, setCarbG] = useState(250);
   const [selectedMeals, setSelectedMeals] = useState({
-    'b': {},
-    'l': {},
-    'd': {}
+    'b': {"calories":0, 'protein': 0, "carb": 0},
+    'l': {"calories":0, 'protein': 0, "carb": 0},
+    'd': {"calories":0, 'protein': 0, "carb": 0}
   });
 
     function updatePantry(newVal, quantity) {
@@ -118,11 +118,11 @@ function App() {
             <Link to='/list'><Button variant={location.pathname === '/list' ? 'contained':"text"}>Shopping List</Button></Link>
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <Typography component="div" sx={{ marginLeft: 5, color: "#B3DC4B"}}> CALORIE GOAL: 1800/{calorieG}
+          <Typography component="div" sx={{ marginLeft: 5, color: "#B3DC4B"}}> CALORIE GOAL: {selectedMeals['b']['calories']+selectedMeals['l']['calories']+selectedMeals['d']['calories']}/{calorieG}
           </Typography>
-          <Typography  component="div" sx={{ marginLeft: 5, color: "#B3DC4B" }}> PROTEIN GOAL: 69/{proteinG}
+          <Typography  component="div" sx={{ marginLeft: 5, color: "#B3DC4B" }}> PROTEIN GOAL: {selectedMeals['b']['protein']+selectedMeals['l']['protein']+selectedMeals['d']['protein']}/{proteinG}
           </Typography>
-          <Typography  component="div" sx={{ marginLeft: 5, color: "#B3DC4B" }}> CARB GOAL: 225/{carbG}
+          <Typography  component="div" sx={{ marginLeft: 5, color: "#B3DC4B" }}> CARB GOAL: {selectedMeals['b']['carb']+selectedMeals['l']['carb']+selectedMeals['d']['carb']}/{carbG}
           </Typography>
         </Toolbar>
       </AppBar>
