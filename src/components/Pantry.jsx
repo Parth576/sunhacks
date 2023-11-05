@@ -30,16 +30,15 @@ function Pantry({ pantry, updatePantry, deleteFromPantry, addToShoppingCart, set
     const [openSnackbar, setOpenSnackbar] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
 
-    // const stapleIngredients = ['milk','eggs','bread','butter','salt','black pepper'];
+    const stapleIngredients = ['milk','eggs','bread','butter','salt','black pepper','chicken','vanilla','soda','peanut butter','nuts','shortening','rice','flour','cinnamon'];
 
-    function setAllIngredients() {
+    function setIngredients() {
         let newObj = {};
-        Object.keys(ingredientData).forEach((elem)=>{
-            newObj[elem] = 0;
+        stapleIngredients.map((elem)=>{
+            newObj[elem] = 0
         });
         setPantry(newObj);
     }
-
 
 const handleSnackbarClose = () => {
   setOpenSnackbar(false);
@@ -55,7 +54,7 @@ const handleSnackbarClose = () => {
         >
             <Paper elevation={3} style={{ textAlign: 'center',alignItems: 'center', height: '88vh', width:"750px",display: 'flex', flexDirection: 'column'}}>
             <Typography sx={{ fontSize: '40px', fontWeight: 'bold', marginBottom:"5px" }}>
-                        Pantry <Button onClick={()=>setAllIngredients()}>gg</Button>
+                        Pantry <Button onClick={()=>setIngredients()}>gg</Button>
                     </Typography>
                 <Box style={{ maxWidth: 700, maxHeight: '40vh', marginTop: 20, flex: 1 }}>
                   
