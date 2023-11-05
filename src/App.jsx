@@ -109,6 +109,13 @@ function App() {
           <Typography variant="h6" component="div" sx={{ marginLeft: 5 }}>
             <Link to='/list'><Button variant={location.pathname === '/list' ? 'contained':"text"}>Shopping List</Button></Link>
           </Typography>
+          <Box sx={{ flexGrow: 1 }} />
+          <Typography component="div" sx={{ marginLeft: 5, color: "#B3DC4B"}}> CALORIE GOAL: 1800/1900
+          </Typography>
+          <Typography  component="div" sx={{ marginLeft: 5, color: "#B3DC4B" }}> PROTEIN GOAL: 69/75
+          </Typography>
+          <Typography  component="div" sx={{ marginLeft: 5, color: "#B3DC4B" }}> CARB GOAL: 225/300
+          </Typography>
         </Toolbar>
       </AppBar>
       <div>

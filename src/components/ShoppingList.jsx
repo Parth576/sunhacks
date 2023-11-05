@@ -40,7 +40,7 @@ function ShoppingList({ shopItem, addToShoppingCart, deleteFromCart }) {
                                 <>
                                 <ListItem key={i}>
                                     <ListItemText>{elem}</ListItemText>
-                                    <TextField value={shopItem[elem]} onChange={(e)=>addToShoppingCart(elem,e.target.value)}  style={{ width: 80, marginLeft: 20}} InputProps={{
+                                    <TextField defaultValue={shopItem[elem]} style={{ width: 80, marginLeft: 20}} InputProps={{
                                             endAdornment: <InputAdornment position="end">
                                                 {ingredientData[elem]==='none'?'count':ingredientData[elem]==='c'?'cups':ingredientData[elem]}
                                             </InputAdornment>,
