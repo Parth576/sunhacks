@@ -33,7 +33,27 @@ const darkTheme = createTheme({
 function App() {
   
   let location = useLocation();
-  console.log(location.pathname);
+  const [pantry, setPantry] = useState({});
+
+    function updatePantry(newVal, quantity) {
+        if (newVal === null) return;
+        if (quantity === 0) {
+            if (newVal in pantry) return;
+        }
+        let newPantry = {
+            ...pantry,
+            [newVal] : quantity
+        };
+        setPantry(newPantry);
+    };
+
+    function deleteFromPantry(pantryItem) {
+        let newPantry = {
+            ...pantry
+        };
+        delete newPantry[pantryItem];
+        setPantry(newPantry);
+    }
 
   return (
     <div>
@@ -56,7 +76,7 @@ function App() {
       </AppBar>
       <div>
         <Routes>
-          <Route path='/' element={<Pantry/>}/>
+          <Route path='/' element={<Pantry pantry={pantry} updatePantry={updatePantry} deleteFromPantry={deleteFromPantry}/>}/>
           <Route path='/meals' element={<MealPlans/>}/>
           <Route path='/list' element={<ShoppingList/>}/>
         </Routes>
