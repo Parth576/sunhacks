@@ -17,6 +17,7 @@ import Typography from '@mui/material/Typography';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import Button from '@mui/material/Button';
 import Slider from '@mui/material/Slider';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -25,9 +26,19 @@ import Select from '@mui/material/Select';
 
 
 
-function Pantry({ pantry, updatePantry, deleteFromPantry, addToShoppingCart }) {
+function Pantry({ pantry, updatePantry, deleteFromPantry, addToShoppingCart, setPantry }) {
     const [openSnackbar, setOpenSnackbar] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
+
+    // const stapleIngredients = ['milk','eggs','bread','butter','salt','black pepper'];
+
+    function setAllIngredients() {
+        let newObj = {};
+        Object.keys(ingredientData).forEach((elem)=>{
+            newObj[elem] = 0;
+        });
+        setPantry(newObj);
+    }
 
 
 const handleSnackbarClose = () => {
@@ -44,7 +55,7 @@ const handleSnackbarClose = () => {
         >
             <Paper elevation={3} style={{ textAlign: 'center',alignItems: 'center', height: '88vh', width:"750px",display: 'flex', flexDirection: 'column'}}>
             <Typography sx={{ fontSize: '40px', fontWeight: 'bold', marginBottom:"5px" }}>
-                        Pantry
+                        Pantry <Button onClick={()=>setAllIngredients()}>gg</Button>
                     </Typography>
                 <Box style={{ maxWidth: 700, maxHeight: '40vh', marginTop: 20, flex: 1 }}>
                   

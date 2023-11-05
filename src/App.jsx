@@ -56,14 +56,20 @@ function App() {
     function addToShoppingCart(newVal, quantity){
       
       if (newVal === null) return;
+
       if (shopItem.hasOwnProperty(newVal)) {
-        // If it exists, increment the quantity by 1
-        shopItem[newVal] += 1;
+        let newCart = {
+          ...shopItem,
+          [newVal]: shopItem[newVal]+=1
+        }
+        setCart(newCart);
       } else {
-        // If it doesn't exist, add it with a quantity of 1
-        shopItem[newVal] = quantity;
+        let newCart = {
+          ...shopItem,
+          [newVal]: quantity
+        }
+        setCart(newCart);
       }
-      setCart({ ...shopItem });
 
     }
 
@@ -107,7 +113,7 @@ function App() {
       </AppBar>
       <div>
         <Routes>
-          <Route path='/' element={<Pantry pantry={pantry} updatePantry={updatePantry} deleteFromPantry={deleteFromPantry} addToShoppingCart={addToShoppingCart} />}/>
+          <Route path='/' element={<Pantry setPantry={setPantry} pantry={pantry} updatePantry={updatePantry} deleteFromPantry={deleteFromPantry} addToShoppingCart={addToShoppingCart} />}/>
           <Route path='/meals' element={<MealPlans pantry={pantry}/>}/>
           <Route path='/list' element={<ShoppingList shopItem={shopItem} addToShoppingCart={addToShoppingCart} deleteFromCart={deleteFromCart}/>}/>
         </Routes>
