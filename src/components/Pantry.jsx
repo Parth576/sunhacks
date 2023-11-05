@@ -18,8 +18,17 @@ function Pantry({ pantry, updatePantry, deleteFromPantry }) {
     
     return (
         <>
-            <Paper style={{ textAlign: 'center',alignItems: 'center', height: '90vh', display: 'flex', flexDirection: 'column'}}>
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            minHeight="95vh" // Set a minimum height to cover the entire viewport height
+        >
+            <Paper elevation={3} style={{ textAlign: 'center',alignItems: 'center', height: '88vh', width:"750px",display: 'flex', flexDirection: 'column'}}>
                 <Box style={{ maxWidth: 700, maxHeight: '40vh', marginTop: 20, flex: 1 }}>
+                    {/* <Typography sx={{ fontSize: '40px', fontWeight: 'bold', marginBottom:"5px" }}>
+                        Pantry
+                    </Typography> */}
                     {Object.keys(pantry).length === 0 && <Typography>Search for ingredients to start </Typography>}
                     {Object.keys(pantry).length > 0 && <List style={{ overflow: 'auto', maxHeight: '100%', border: '2px solid grey', minWidth: 400}}>
                         {Object.keys(pantry).map((elem,i) => {
@@ -55,6 +64,7 @@ function Pantry({ pantry, updatePantry, deleteFromPantry }) {
                     />
                 </Box>
             </Paper>
+            </Box>
         </>
         
     );
