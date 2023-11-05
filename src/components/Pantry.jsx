@@ -17,7 +17,11 @@ import Typography from '@mui/material/Typography';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-
+import Slider from '@mui/material/Slider';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 
 
@@ -119,6 +123,75 @@ const handleSnackbarClose = () => {
                         renderInput={(params) => <TextField {...params} label="Search Ingredients" />}
                     />
                 </Box>
+                <Box>
+                    <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                    <Typography sx={{ fontSize: '32px', fontWeight: 'bold' }}>
+                        Preferences
+                    </Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                        Calories 
+                    </Grid>
+                    <Grid item xs={6}>
+                    <Box sx={{ width: 300 }}>
+                  
+                    <Slider min={1300}   max={2000} defaultValue={1500} aria-label="Default" valueLabelDisplay="auto" />
+                    </Box>
+                    </Grid>
+                    <Grid item xs={6}>
+                        Protien
+                    </Grid>
+                    <Grid item xs={6}>
+                    <Box sx={{ width: 300 }}>
+                    
+                    <Slider  min={50}   max={100} defaultValue={80} aria-label="Default" valueLabelDisplay="auto" />
+                    </Box>
+                    </Grid>
+                    <Grid item xs={6}>
+                        Carbohydrates
+                    </Grid>
+                    <Grid item xs={6}>
+                    <Box sx={{ width: 300 }}>
+                   
+                    <Slider  min={80}   max={180} defaultValue={120} aria-label="Default" valueLabelDisplay="auto" />
+                    </Box>
+                    </Grid>
+                    <Grid item xs={6}>
+                       Cuisine
+                    </Grid>
+                    <Grid item xs={6}>
+
+                    <Box sx={{ maxWidth: 100 }}>
+                    <FormControl fullWidth>
+                        <InputLabel id="demo-simple-select-label">Cuisine</InputLabel>
+                        <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={20}
+                        label="Cuisine"
+                       
+                        >
+                        <MenuItem value={10}>Italian</MenuItem>
+                        <MenuItem value={20}>Indian</MenuItem>
+                        <MenuItem value={30}>Mediterranean</MenuItem>
+                        </Select>
+                    </FormControl>
+                    </Box>
+
+                    </Grid>
+                    <Grid item xs={12}>
+                        
+                    </Grid>
+
+                 </Grid>
+                 </Box>
+
+
+
+
+
+
             </Paper>
             </Box>
         </>
