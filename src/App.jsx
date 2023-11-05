@@ -42,6 +42,11 @@ function App() {
   const [calorieG, setCaloriesG] = useState(1800);
   const [proteinG, setProteinG] = useState(65);
   const [carbG, setCarbG] = useState(250);
+  const [selectedMeals, setSelectedMeals] = useState({
+    'b': {},
+    'l': {},
+    'd': {}
+  });
 
     function updatePantry(newVal, quantity) {
         if (newVal === null) return;
@@ -94,7 +99,6 @@ function App() {
   }
 
    
-
   return (
     <div>
     <ThemeProvider theme={darkTheme}>
@@ -127,7 +131,7 @@ function App() {
           <Route path='/' element={<Pantry 
           setPantry={setPantry} pantry={pantry} updatePantry={updatePantry} deleteFromPantry={deleteFromPantry} addToShoppingCart={addToShoppingCart} 
           calorieG={calorieG} setCaloriesG={setCaloriesG} proteinG={proteinG} setProteinG={setProteinG} carbG={carbG} setCarbG={setCarbG} />}/>
-          <Route path='/meals' element={<MealPlans pantry={pantry}/>}/>
+          <Route path='/meals' element={<MealPlans pantry={pantry} selectedMeals={selectedMeals} setSelectedMeals={setSelectedMeals}/>}/>
           <Route path='/list' element={<ShoppingList shopItem={shopItem} addToShoppingCart={addToShoppingCart} deleteFromCart={deleteFromCart}/>}/>
         </Routes>
         

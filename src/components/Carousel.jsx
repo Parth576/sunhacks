@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -53,16 +53,32 @@ const style = {
     p: 4,
   };
 
-export default function Carousel({ recipeNames, recipes, mealType }) {
-    const [activeIndex, setActiveIndex] = useState(Math.floor(recipeNames.length / 2)); // Start with the middle slide as active
+export default function Carousel({ recipeNames, recipes, mealType, recipeIndex, setRecipeIndex }) {
+    const [activeIndex, setActiveIndex] = useState(Math.floor(recipeNames.length / 2)); 
+
+    // useEffect(()=>{
+    //     const selectedRecipe = recipeNames[activeIndex];
+    //     const recipeObj = recipes[selectedRecipe];
+    //     let newObj = {
+    //         ...selMeals,
+    //         [mealType]: recipeObj
+    //     }
+    //     setMeals(newObj);
+    // },[]);
 
     const handleSlideChange = (swiper) => {
       setActiveIndex(swiper.activeIndex);
+    //   const selectedRecipe = recipeNames[swiper.activeIndex];
+    //   const recipeObj = recipes[selectedRecipe];
+      let newObj = {
+        ...recipeIndex,
+        [mealType]: swiper.activeIndex
+      }
+      setRecipeIndex(newObj);
     };
 
     function getDonutData(recipeName) {
         const recipeData = recipes[recipeName];
-        console.log(recipeData);
         const protein = recipeData['protein'];
         const carb = recipeData['carb'];
         const fat = recipeData['fat'];
