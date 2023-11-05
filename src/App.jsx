@@ -108,7 +108,7 @@ function App() {
       <div>
         <Routes>
           <Route path='/' element={<Pantry pantry={pantry} updatePantry={updatePantry} deleteFromPantry={deleteFromPantry} addToShoppingCart={addToShoppingCart} />}/>
-          <Route path='/meals' element={<MealPlans/>}/>
+          <Route path='/meals' element={<MealPlans pantry={pantry}/>}/>
           <Route path='/list' element={<ShoppingList shopItem={shopItem} addToShoppingCart={addToShoppingCart} deleteFromCart={deleteFromCart}/>}/>
         </Routes>
         
