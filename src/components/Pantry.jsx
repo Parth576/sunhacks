@@ -26,7 +26,7 @@ import Select from '@mui/material/Select';
 
 
 
-function Pantry({ pantry, updatePantry, deleteFromPantry, addToShoppingCart, setPantry }) {
+function Pantry({ pantry, updatePantry, deleteFromPantry, addToShoppingCart, setPantry, calorieG, setCaloriesG, proteinG, setProteinG, carbG, setCarbG}) {
     const [openSnackbar, setOpenSnackbar] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
 
@@ -146,16 +146,16 @@ const handleSnackbarClose = () => {
                     <Grid item xs={6}>
                     <Box sx={{ width: 300 }}>
                   
-                    <Slider min={1300}   max={2000} defaultValue={1500} aria-label="Default" valueLabelDisplay="auto" />
+                    <Slider min={1300} max={2400} value={calorieG} onChange={(e)=>{setCaloriesG(e.target.value)}} aria-label="Default" marks step={100} valueLabelDisplay="on" />
                     </Box>
                     </Grid>
                     <Grid item xs={6}>
-                        Protien
+                        Protein
                     </Grid>
                     <Grid item xs={6}>
                     <Box sx={{ width: 300 }}>
                     
-                    <Slider  min={50}   max={100} defaultValue={80} aria-label="Default" valueLabelDisplay="auto" />
+                    <Slider  min={50}   max={120} value={proteinG} onChange={(e)=>{setProteinG(e.target.value)}} aria-label="Default" step={10} valueLabelDisplay="on" />
                     </Box>
                     </Grid>
                     <Grid item xs={6}>
@@ -164,7 +164,7 @@ const handleSnackbarClose = () => {
                     <Grid item xs={6}>
                     <Box sx={{ width: 300 }}>
                    
-                    <Slider  min={80}   max={180} defaultValue={120} aria-label="Default" valueLabelDisplay="auto" />
+                    <Slider  min={160}   max={400} value={carbG} onChange={(e)=>{setCarbG(e.target.value)}} aria-label="Default" step={20} valueLabelDisplay="on" />
                     </Box>
                     </Grid>
                     <Grid item xs={6}>

@@ -39,6 +39,10 @@ function App() {
   const [pantry, setPantry] = useState({});
   const [shopItem, setCart] = useState({});
 
+  const [calorieG, setCaloriesG] = useState(1800);
+  const [proteinG, setProteinG] = useState(65);
+  const [carbG, setCarbG] = useState(250);
+
     function updatePantry(newVal, quantity) {
         if (newVal === null) return;
         if (quantity === 0) {
@@ -110,17 +114,19 @@ function App() {
             <Link to='/list'><Button variant={location.pathname === '/list' ? 'contained':"text"}>Shopping List</Button></Link>
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <Typography component="div" sx={{ marginLeft: 5, color: "#B3DC4B"}}> CALORIE GOAL: 1800/1900
+          <Typography component="div" sx={{ marginLeft: 5, color: "#B3DC4B"}}> CALORIE GOAL: 1800/{calorieG}
           </Typography>
-          <Typography  component="div" sx={{ marginLeft: 5, color: "#B3DC4B" }}> PROTEIN GOAL: 69/75
+          <Typography  component="div" sx={{ marginLeft: 5, color: "#B3DC4B" }}> PROTEIN GOAL: 69/{proteinG}
           </Typography>
-          <Typography  component="div" sx={{ marginLeft: 5, color: "#B3DC4B" }}> CARB GOAL: 225/300
+          <Typography  component="div" sx={{ marginLeft: 5, color: "#B3DC4B" }}> CARB GOAL: 225/{carbG}
           </Typography>
         </Toolbar>
       </AppBar>
       <div>
         <Routes>
-          <Route path='/' element={<Pantry setPantry={setPantry} pantry={pantry} updatePantry={updatePantry} deleteFromPantry={deleteFromPantry} addToShoppingCart={addToShoppingCart} />}/>
+          <Route path='/' element={<Pantry 
+          setPantry={setPantry} pantry={pantry} updatePantry={updatePantry} deleteFromPantry={deleteFromPantry} addToShoppingCart={addToShoppingCart} 
+          calorieG={calorieG} setCaloriesG={setCaloriesG} proteinG={proteinG} setProteinG={setProteinG} carbG={carbG} setCarbG={setCarbG} />}/>
           <Route path='/meals' element={<MealPlans pantry={pantry}/>}/>
           <Route path='/list' element={<ShoppingList shopItem={shopItem} addToShoppingCart={addToShoppingCart} deleteFromCart={deleteFromCart}/>}/>
         </Routes>
