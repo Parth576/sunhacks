@@ -28,7 +28,9 @@ function Pantry({ pantry, updatePantry, deleteFromPantry }) {
                                 <ListItem key={i}>
                                     <ListItemText>{elem}</ListItemText>
                                     <TextField value={pantry[elem]} onChange={(e)=>updatePantry(elem,e.target.value)}  style={{ width: 80, marginLeft: 20}} InputProps={{
-                                            endAdornment: <InputAdornment position="end">{ingredientData[elem]}</InputAdornment>,
+                                            endAdornment: <InputAdornment position="end">
+                                                {ingredientData[elem]==='none'?'count':ingredientData[elem]==='c'?'cups':ingredientData[elem]}
+                                            </InputAdornment>,
                                         }} variant="standard" />
                                     <ListItemIcon>
                                         <ListItemButton onClick={()=>deleteFromPantry(elem)}>
