@@ -20,9 +20,9 @@ function MealPlans({ pantry, selectedMeals, setSelectedMeals }) {
     function setRecipeIndexAndRecipe(indexObj) {
         setRecipeIndex(indexObj);
         let newSelectedMeals = {
-            'b': recipeData[breakfastRecipes[recipeIndex.b]],
-            'l': recipeData[lunchRecipes[recipeIndex.l]],
-            'd': recipeData[dinnerRecipes[recipeIndex.d]]
+            'b': recipeData[breakfastRecipes[indexObj.b]],
+            'l': recipeData[lunchRecipes[indexObj.l]],
+            'd': recipeData[dinnerRecipes[indexObj.d]]
         };
         setSelectedMeals(newSelectedMeals);
     }
